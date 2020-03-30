@@ -9,6 +9,10 @@ import SignUp from '../SignUp/SignUp'
 import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
+// import CreateRecipe from '../CreateRecipe/CreteRecipe'
+// import Recipes from '../Recipe/Recipes'
+// import Recipe from '../Recipe/Recipe'
+// import RecipeEdit from '../RecipeEdit/RecipeEdit'
 
 // we want to have state at the highest level possible in our app
 // so that `App` is a class component
