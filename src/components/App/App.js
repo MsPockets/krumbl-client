@@ -9,10 +9,10 @@ import SignUp from '../SignUp/SignUp'
 import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
-// import CreateRecipe from '../CreateRecipe/CreteRecipe'
-// import Recipes from '../Recipe/Recipes'
-// import Recipe from '../Recipe/Recipe'
-// import RecipeEdit from '../RecipeEdit/RecipeEdit'
+import CreateRecipe from '../CreateRecipe/CreateRecipe'
+import Recipes from '../Recipes/Recipes'
+import Recipe from '../Recipe/Recipe'
+import RecipeEdit from '../RecipeEdit/RecipeEdit'
 
 // we want to have state at the highest level possible in our app
 // so that `App` is a class component
@@ -64,6 +64,18 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/create-recipe' render={({ match }) => (
+            <CreateRecipe match={ match } msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/recipes/:id/edit' render={({ match }) => (
+            <RecipeEdit match={ match } msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/recipes' render={({ match }) => (
+            <Recipes match={ match } msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/recipes/:id' render={({ match }) => (
+            <Recipe match={ match } msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
       </Fragment>

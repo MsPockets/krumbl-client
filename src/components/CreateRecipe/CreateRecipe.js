@@ -5,6 +5,7 @@ import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import RecipeForm from '../shared/RecipeForm'
 import Layout from '../shared/Layout'
+import messages from '../AutoDismissAlert/messages'
 
 const RecipeCreate = props => {
   const [recipe, setRecipe] = useState({
@@ -12,26 +13,36 @@ const RecipeCreate = props => {
     ingredients: '',
     description: ''
   })
+
   const [createdRecipeId, setCreatedRecipeId] = useState(null)
 
   const handleChange = event => {
     const updatedField = { [event.target.name]: event.target.value }
-
     const editedRecipe = Object.assign({ ...recipe }, updatedField)
-
     setRecipe(editedRecipe)
   }
 
-  const handleSubmit = event => {
+  const createRecipe = event => {
     event.preventDefault()
-
     axios({
       url: `${apiUrl}/recipes`,
       method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${props.user.token}`
+      },
       data: { recipe }
     })
       .then(res => setCreatedRecipeId(res.data.recipe.id))
-      .catch(console.error)
+      .then(() => props.msgAlert({
+        heading: 'Post Success',
+        message: messages.creteRecipeSuccess,
+        variant: 'success'
+      }))
+      .catch(error => props.msgAlert({
+        heading: 'Failed to post: ' + error.message,
+        message: messages.createRecipeFailure,
+        variant: 'danger'
+      }))
   }
 
   if (createdRecipeId) {
@@ -41,9 +52,9 @@ const RecipeCreate = props => {
   return (
     <Layout>
       <RecipeForm
-        Recipe={recipe}
+        recipe={recipe}
         handleChange={handleChange}
-        handleSubmit={handleSubmit}
+        handleSubmit={createRecipe}
         cancelPath="/"
       />
     </Layout>

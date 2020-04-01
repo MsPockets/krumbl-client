@@ -9,20 +9,30 @@ const Recipes = props => {
   const [recipes, setRecipes] = useState([])
 
   useEffect(() => {
-    axios(`${apiUrl}/recipes`)
-      .then(res => setRecipes(recipes))
+    axios({
+      url: `${apiUrl}/recipes`,
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${props.user.token}`
+      }
+    })
+      .then(res => setRecipes(res.data.recipes))
       .catch(console.error)
   }, [])
 
-  const RecipesList = Recipes.map(recipe => (
-    <li key={recipe.id}>
-      <Link to={`/Recipes/${recipe.id}`}>{recipe.title}</Link>
-    </li>
+  const RecipesList = recipes.map(recipe => (
+    <div key={recipe.id}>
+      <h4>
+        <Link to={`/recipes/${recipe.id}`}>{recipe.title}</Link>
+      </h4>
+      <p>Ingredients: {recipe.ingredients}</p>
+      <p>Directions: {recipe.description}</p>
+    </div>
   ))
 
   return (
     <Layout>
-      <h4>Recipes</h4>
+      <h4>Check out the latest recipes!</h4>
       <ul>
         {RecipesList}
       </ul>
