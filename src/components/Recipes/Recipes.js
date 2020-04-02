@@ -7,7 +7,7 @@ import Layout from '../shared/Layout'
 
 const Recipes = props => {
   const [recipes, setRecipes] = useState([])
-
+  console.log(props.user.token)
   useEffect(() => {
     axios({
       url: `${apiUrl}/recipes`,
@@ -20,7 +20,7 @@ const Recipes = props => {
       .catch(console.error)
   }, [])
 
-  const RecipesList = recipes.map(recipe => (
+  const RecipesList = recipes.reverse().map(recipe => (
     <div key={recipe.id}>
       <h4>
         <Link to={`/recipes/${recipe.id}`}>{recipe.title}</Link>

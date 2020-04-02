@@ -16,8 +16,14 @@ const RecipeEdit = props => {
   const [updated, setUpdated] = useState(false)
 
   useEffect(() => {
-    axios(`${apiUrl}/recipes/${recipe.id}`)
-      .then(res => setRecipe(recipe))
+    axios({
+      url: `${apiUrl}/recipes/${props.match.params.id}`,
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${props.user.token}`
+      }
+    })
+      .then(res => setRecipe(res.data.recipe))
       .catch(error => {
         props.msgAlert({
           heading: 'Failed to get recipe to update: ' + error.message,

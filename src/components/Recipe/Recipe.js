@@ -1,57 +1,3 @@
-// import React, { useState, useEffect } from 'react'
-// import { Link, Redirect } from 'react-router-dom'
-// import axios from 'axios'
-
-// import apiUrl from '../../apiConfig'
-// import Layout from '../shared/Layout'
-
-// const Recipe = props => {
-//   const [recipe, setRecipe] = useState(null, [])
-//   const deleted = useState(false)
-//   useEffect(() => {
-//     axios(`${apiUrl}/recipes`)
-//       .then(res => setRecipe(recipe), [])
-//       .catch(console.error)
-//   }, [])
-//   axios(`${apiUrl}/recipes/${this.props.match.params.id}`)
-//     .then(res => this.setState({ recipe: res.data.recipe.id }))
-//     .catch(console.error)
-
-//   const destroy = () => {
-//     axios({
-//       url: `${apiUrl}/recipes/${this.props.match.params.id}`,
-//       method: 'DELETE'
-//     })
-//       .then(() => this.setState({ deleted: true }))
-//       .catch(console.error)
-//   }
-
-//   if (!recipe) {
-//     return <p>Loading...</p>
-//   }
-
-//   if (deleted) {
-//     return <Redirect to={
-//       { pathname: '/', state: { msg: 'Recipe succesfully deleted!' } }
-//     } />
-//   }
-
-//   return (
-//     <Layout>
-//       <h4>{recipe.title}</h4>
-//       <p>Ingredients: {recipe.ingredients}</p>
-//       <p>Directions: {recipe.description}</p>
-//       <button onClick={destroy}>🗑</button>
-//       <Link to={`/recipes/${this.props.match.params.id}/edit`}>
-//         <button>Edit</button>
-//       </Link>
-//       <Link to="/recipes">Back to all Recipes</Link>
-//     </Layout>
-//   )
-// }
-
-// export default Recipe
-
 import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
@@ -131,10 +77,14 @@ class Recipe extends Component {
         <h4>{recipe.title}</h4>
         <p>Ingredients: {recipe.ingredients}</p>
         <p>Directions: {recipe.description}</p>
-        <button onClick={this.destroy}>Delete Recipe</button>
-        <Link to={`/recipes/${this.props.match.params.id}/edit`}>
-          <button>Edit</button>
-        </Link>
+        {recipe.editble && (
+          <button onClick={this.destroy}>Delete Recipe</button>
+        )}
+        {recipe.editable && (
+          <Link to={`/recipes/${this.props.match.params.id}/edit`}>
+            <button>Edit</button>
+          </Link>
+        )}
         <Link to="/recipes">Back to all Recipes</Link>
       </Layout>
     )
