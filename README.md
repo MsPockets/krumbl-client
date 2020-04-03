@@ -3,6 +3,7 @@
 ## **Description**
 This single page web application is designed to allow users to upload recipes, view other's recipes, and make changes to the recipes they have added. It works very similarly to a social media website, in that a user can see every post that has been made, but are only able to modify their posts. 
 ## **Screenshots**
+![](https://user-images.githubusercontent.com/57927064/78313480-d6b9e180-7524-11ea-94e1-54ec27551c81.png)
 
 
 ## **Links**
