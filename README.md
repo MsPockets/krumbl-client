@@ -1,129 +1,83 @@
-[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
+# Krumbl Recipe Sharing
 
-# react-auth-template
+## **Description**
+This single page web application is designed to allow users to upload recipes, view other's recipes, and make changes to the recipes they have added. It works very similarly to a social media website, in that a user can see every post that has been made, but are only able to modify their posts. 
+## **Screenshots**
 
-A front-end framework template for starting projects with a recent version of
-either the [Rails API Template](https://git.generalassemb.ly/ga-wdi-boston/rails-api-template)
-or the [Express API Template](https://git.generalassemb.ly/ga-wdi-boston/express-api-template).
 
-## Installation
+## **Links**
+- [Front End Repository](https://github.com/MsPockets/krumbl-client)
+- [Front End Deployed Site]()
+- [Back End Repository](https://github.com/MsPockets/krumbl-api)
+- [Back End Deployed Site](https://krumbl.herokuapp.com)
+- [React Auth Template](https://git.generalassemb.ly/MsPockets/react-auth-template)
+- [Rails API Template](https://git.generalassemb.ly/ga-wdi-boston/rails-api-template)
 
-1. [Download](../../archive/master.zip) this template.
-1. Unzip and rename the template directory (`unzip ~/Downloads/react-auth-template-master.zip`).
-1. Move into the new project and `git init`.
-1. Empty [`README.md`](README.md) and fill with your own content.
-1. Replace `react-auth-template` in `package.json` with your
-   projects name.
-1. Replace the `"homepage"` field in `package.json` with your (public) Github
-   account name and repository name.
-1. Install dependencies with `npm install`.
-1. `git add` and `git commit` your changes.
-1. Run the development server with `npm start`.
+## **Set Up**
 
-## Deployment
+### **Dependencies**
+#### **Front end**
+- npm `npm install`
+- Development Local Server `npm start`
+- Grunt `npm install grunt`
 
-Before deploying, you first need to make sure the `homepage` key in your
-`package.json` is pointing to the correct value. It should be the url of your
-deployed application.
+#### **Back End**
+- install gems `bundle install`
+- API Local Server `bin/rails server`
 
-To deploy you should first make sure you are on the `master` branch with a
-clean working directory, then you can run `npm run deploy` and wait to see if
-it runs successfully.
+### **Technologies Used**
+For this web application I am using Ruby on Rails, React.js, HTML5, and CSS. 
 
-## About
+## **User Stories**
+**V1**
+- As a user I want to be able to sign in.
+- As a user I want to be able to sign up.
+- As a signed in user I want to be able to change my password
+- As a signed in user I want to be able to sign out
+- As a signed in user I want to be able to create a recipe
+- As a signed in user I want to be able to view recipes
+- As a signed in user I want to be able to edit my recipes
+- As a signed in user I want to be able to delete my recipes
 
-This template is derived from GA Boston's [react-template](https://git.generalassemb.ly/ga-wdi-boston/react-template).
-Most of the development dependencies, such as linters, SCSS compiler, Webpack
-config, NPM scripts, etc in this repo come from there.
+**V2**
+- As a signed in user I want to be able to like a recipe
+- As a signed in user I want to be able to comment on a recipe
+- As a signed in user I want to be able to upload a picture of my recipe
 
-It includes all the components and routes needed to sign up, sign in, change
-passwords, and sign out of an API built with either template linked above, with
-no need for modification.
 
-**NOTE**: You should customize the included components to suit you app! They're
-provided as a guide and a bare minimum of functionality and style. Consider
-changing the provided SCSS styles, modifying the auth code, improving the flash
-messages, etc.
+## **ERD**
 
-## Structure
+![ERD](https://user-images.githubusercontent.com/57927064/78308951-cea77500-7517-11ea-80ce-03b7dee279cb.png)
 
-The top-level `App` component stores the currently authenticated
-user in state, as well as data related to the flash messages. `App` renders the
-`Header` component, and a list of routes, each of which render a component from
-`src/components`. The `src/api` directory has a component file, `auth.js`, which
-contains all the needed `axios` calls pertaining to authentication.
+## **Routes**
+**User**
+- Sign-up: 'POST'
+- Sign-in: 'POST'
+- Change Password: 'PATCH'
+- Sign-out: 'DELETE'
 
-You can follow this pattern in your app as well. For instance, if you are making
-an app that keeps track of books, you might want a `src/api/books.js`, which
-contains its own `axios` call pertaining to your books resource CRUD actions.
-Using a separate directory within `components` for each individual component you
-add makes it easy to locate and update components and has the added benefit of
-making it easy to create custom styles that apply to that specific component.
-To apply component specific styles, add a file to the component's directory such
-as `ComponentName.scss` and then import it directly into the component with
-`import './ComponentName.scss'`.  This will keep your styles modularized and
-make it easier to make changes at the component level.
+**Recipe**
+- Create Recipe: 'POST'
+- Show Recipes: 'GET'
+- Edit Recipe: 'PATCH'
+- Delete Recipe: 'DELETE'
 
-## Features
+## **Planning/Devlopment**
 
-### `<AuthenticatedRoute />`
+**Day 1**
+- On day 1 of the project I began by setting up my templates. After the templates were set up, I created GitHub respositories for each of them and linked them. I then set up the Heroku database and deployed my API to it. After finishing that I moved on to making the react routes in my client folder. This process continued into day 2
 
-This template contains a handy component for creating routes that require a
-user to be authenticated before visiting. This component lives in
-`src/auth/components/AuthenticatedRoute.js` and is already required in `App`.
-It's a thin wrapper around React Router's `<Route />` component. The only
-difference is that it expects a prop called `user`, and if that prop is falsy,
-it will render a `<Redirect />` that takes the user to `/`. **To use
-it, you must pass it the user as a prop!**
+**Day 2**
+- On day 2 of the project, I finished setting up the react routes. After that was finished, I began building the API by setting up the scaffolding and making minor adjustments. After building the scaffolding, I went back into the client folder and started working on getting everything working together. I ran into an issue today where I lost track of the state and had issues finding the id's of the recipes. This was because I forgot to add `match={match}` to my routes. This issue took the rest of the day
 
-It supports both the `component=` and `render=` attributes, but like `<Route />`
-it will not forward props to the component if you use `component=`.
+**Day 3**
+- On day 3 it was back to fixing all of the recipe routes in my client folder. After those were finished, it was time to add UI improvements by adding routes to certain elements and addind redirects so the user has to click around less. This process continued until the end of the day when all that was left was, users being able to see all of the recipes but only modify their own, and autofilling form fields on update
 
-### `<AutoAlertDismiss />` Component
+**Day 4**
+- On day 4 I was able to fix the autofilling update form fairly easily and quickly. It was a small matter of passing it `res.data.recipe` instead of just `recipe`. After that I began working on the users being able to access all recipes but only modify ones they own. After a while of trial and error, I created an issue and waited for another set of eyes. While I waited I continued to do UI improvements and began working on the documentation. After getting the issue resolved, my API completely broke and was throwing several errors I have never seen before. Figuring out what was wrong took the help of 3 instructors over the course of 3 hours. The problem was when I generated the scaffold, it generated 2 migrations that weren't supposed to be there. These migrations caused the password field in sign up to think that it was empty when password was being sent. After removing those migrations the issue was solved and I reached MVP. Unfortunately, the API issue took up the rest of the day, so I wasn't able to get any styling done on day 4, but styling will happen in future iterations of the app. 
 
-This template also already contains a component that displays user messages.
-Messages are configurable via redux actions.  This component can be found in
-`src/components/AutoAlertDismiss/AutoAlertDismiss.js`. **There is no need to add
-this component to your app. It is already required in `App`.**  A single
-component instance is used to manage all alerts application-wide.
+## **Future Iterations**
 
-The alert can be used by passing the `alertMsg` method to a rendered route.  The
-`alertMsg` method expects an object with a `heading`, `message`, and a `variant` property.
+In the future, I would like to implement comments for each of the recipes that way cooks can interact with each other and chat about the details of each recipe.
 
-Use this component in conjunction with the `messages.js` file in the same
-directory to create and manage all of your application messages in one place.
-
-The `variant` property must be a Bootstrap alert variant, as this component is merely a
-wrapper around the [react-bootstrap Alert
-component](https://react-bootstrap.github.io/components/alerts/).  The types it
-will accept are: 'primary', 'secondary', 'success', 'danger', 'warning', 'info',
-'light', and 'dark'.
-
- To change the duration of the message, replace `5000` with a value of your
- choice (in milliseconds) in this component's `componentDidMount` method.
-
-### `src/apiConfig.js`
-
-Just like in
-[browser-template](https://git.generalassemb.ly/ga-wdi-boston/browser-template),
-this file will determine whether you're in a production or development
-environment and choose an API URL accordingly. Don't forget to replace the
-`production` URL with your deployed API's URL.
-
-## Tasks
-
-Developers should run these often!
-
-- `npm run nag`: runs code quality analysis tools on your code and complains.
-- `npm run make-standard`: reformats all your code in the JavaScript Standard
-  Style.
-- `npm run start`: generates bundles, watches, and livereloads.
-- `npm run build`: place bundled styles and scripts where `index.html` can find
-    them
-- `npm run deploy`: builds and deploys master branch
-
-## [License](LICENSE)
-
-1. All content is licensed under a CC­BY­NC­SA 4.0 license.
-1. All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co.
+I also plan on adding likes in the form of favorites so that users will be able to save all their favorite recipes from other cooks and have them all in one place. 

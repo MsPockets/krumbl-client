@@ -17,6 +17,7 @@ class Recipe extends Component {
   }
 
   componentDidMount () {
+    console.log(this.props)
     axios({
       url: `${apiUrl}${this.props.match.url}`,
       method: 'GET',
@@ -77,8 +78,8 @@ class Recipe extends Component {
         <h4>{recipe.title}</h4>
         <p>Ingredients: {recipe.ingredients}</p>
         <p>Directions: {recipe.description}</p>
-        {recipe.editble && (
-          <button onClick={this.destroy}>Delete Recipe</button>
+        {recipe.editable && (
+          <button onClick={this.destroy}>Delete</button>
         )}
         {recipe.editable && (
           <Link to={`/recipes/${this.props.match.params.id}/edit`}>

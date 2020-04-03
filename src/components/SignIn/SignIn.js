@@ -25,15 +25,18 @@ class SignIn extends Component {
     event.preventDefault()
 
     const { msgAlert, history, setUser } = this.props
+    const { email, password } = this.state
 
-    signIn(this.state)
+    signIn({ email, password })
       .then(res => setUser(res.data.user))
-      .then(() => msgAlert({
-        heading: 'Sign In Success',
-        message: messages.signInSuccess,
-        variant: 'success'
-      }))
-      .then(() => history.push('/'))
+      .then(() => {
+        msgAlert({
+          heading: 'Sign In Success',
+          message: messages.signInSuccess,
+          variant: 'success'
+        })
+      })
+      .then(() => history.push('/recipes'))
       .catch(error => {
         this.setState({ email: '', password: '' })
         msgAlert({
