@@ -4,10 +4,10 @@ import axios from 'axios'
 
 import apiUrl from '../../apiConfig'
 import Layout from '../shared/Layout'
+import messages from '../AutoDismissAlert/messages'
 
 const Recipes = props => {
   const [recipes, setRecipes] = useState([])
-  console.log(props.user.token)
   useEffect(() => {
     axios({
       url: `${apiUrl}/recipes`,
@@ -17,7 +17,13 @@ const Recipes = props => {
       }
     })
       .then(res => setRecipes(res.data.recipes))
-      .catch(console.error)
+      .catch(error => {
+        this.props.msgAlert({
+          heading: 'Failed to view: ' + error.message,
+          message: messages.viewRecipeFailure,
+          variant: 'danger'
+        })
+      })
   }, [])
 
   const RecipesList = recipes.reverse().map(recipe => (

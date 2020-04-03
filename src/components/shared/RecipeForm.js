@@ -6,6 +6,7 @@ const RecipeForm = ({ recipe, handleSubmit, handleChange, cancelPath }) => (
     <form onSubmit={handleSubmit}>
       <label>Title</label>
       <input
+        required="true"
         placeholder="Pallella, Zucchini Bread"
         name="title"
         value={recipe.title}

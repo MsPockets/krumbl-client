@@ -17,7 +17,6 @@ class Recipe extends Component {
   }
 
   componentDidMount () {
-    console.log(this.props)
     axios({
       url: `${apiUrl}${this.props.match.url}`,
       method: 'GET',
