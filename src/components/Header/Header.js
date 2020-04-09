@@ -23,10 +23,17 @@ const alwaysOptions = (
   </Fragment>
 )
 
+const NavbarStyle = {
+  backgroundColor: '#edbe32'
+}
+const logo = {
+  maxHeight: '25px',
+  display: 'inline'
+}
 const Header = ({ user }) => (
-  <Navbar bg="primary" variant="dark" expand="md">
+  <Navbar style={NavbarStyle} variant="dark" expand="md">
     <Nav.Link href="#recipes">
-      Krumbl
+      <img style={logo} src="https://i.ya-webdesign.com/images/cookie-icon-png-16.png"></img><p style={logo}>Krumbl</p>
     </Nav.Link>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">

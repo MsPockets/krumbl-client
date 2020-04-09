@@ -71,21 +71,22 @@ class Recipe extends Component {
         { pathname: '/recipes', state: { msg: 'Recipe succesfully deleted!' } }
       } />
     }
-
     return (
       <Layout>
-        <h4>{recipe.title}</h4>
-        <p>Ingredients: {recipe.ingredients}</p>
-        <p>Directions: {recipe.description}</p>
-        {recipe.editable && (
-          <button onClick={this.destroy}>Delete</button>
-        )}
-        {recipe.editable && (
-          <Link to={`/recipes/${this.props.match.params.id}/edit`}>
-            <button>Edit</button>
-          </Link>
-        )}
-        <Link to="/recipes">Back to all Recipes</Link>
+        <div>
+          <h4>{recipe.title}</h4>
+          <p>Ingredients: {recipe.ingredients}</p>
+          <p>Directions: {recipe.description}</p>
+          {recipe.editable && (
+            <button onClick={this.destroy}>Delete</button>
+          )}
+          {recipe.editable && (
+            <Link to={`/recipes/${this.props.match.params.id}/edit`}>
+              <button>Edit</button>
+            </Link>
+          )}
+          <Link to="/recipes">Back to all Recipes</Link>
+        </div>
       </Layout>
     )
   }

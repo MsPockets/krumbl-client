@@ -35,7 +35,6 @@ const Recipes = props => {
       <p>Directions: {recipe.description}</p>
     </div>
   ))
-
   return (
     <Layout>
       <h4>Check out the latest recipes!</h4>
