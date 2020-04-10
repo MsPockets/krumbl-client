@@ -61,11 +61,17 @@ class Recipe extends Component {
 
   render () {
     const { recipe, deleted } = this.state
-
     if (!recipe) {
       return <p>Loading...</p>
     }
-
+    const recipeStyle = {
+      boxShadow: '2px 4px gray',
+      borderRadius: '20px',
+      border: '2px solid gray',
+      padding: '10px',
+      width: '600px',
+      margin: '10px'
+    }
     if (deleted) {
       return <Redirect to={
         { pathname: '/recipes', state: { msg: 'Recipe succesfully deleted!' } }
@@ -73,7 +79,7 @@ class Recipe extends Component {
     }
     return (
       <Layout>
-        <div>
+        <div style={recipeStyle}>
           <h4>{recipe.title}</h4>
           <p>Ingredients: {recipe.ingredients}</p>
           <p>Directions: {recipe.description}</p>

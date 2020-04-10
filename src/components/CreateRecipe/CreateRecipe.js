@@ -48,16 +48,25 @@ const RecipeCreate = props => {
   if (createdRecipeId) {
     return <Redirect to={`/recipes/${createdRecipeId}`} />
   }
-
+  const recipeStyle = {
+    boxShadow: '2px 4px gray',
+    borderRadius: '20px',
+    border: '2px solid gray',
+    padding: '10px',
+    width: '600px',
+    margin: '10px'
+  }
   return (
-    <Layout>
-      <RecipeForm
-        recipe={recipe}
-        handleChange={handleChange}
-        handleSubmit={createRecipe}
-        cancelPath="/"
-      />
-    </Layout>
+    <div style={recipeStyle}>
+      <Layout>
+        <RecipeForm
+          recipe={recipe}
+          handleChange={handleChange}
+          handleSubmit={createRecipe}
+          cancelPath="/recipes"
+        />
+      </Layout>
+    </div>
   )
 }
 

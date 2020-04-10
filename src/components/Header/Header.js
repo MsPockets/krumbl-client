@@ -31,7 +31,7 @@ const logo = {
   display: 'inline'
 }
 const Header = ({ user }) => (
-  <Navbar style={NavbarStyle} variant="dark" expand="md">
+  <Navbar style={NavbarStyle} expand="md">
     <Nav.Link href="#recipes">
       <img style={logo} src="https://i.ya-webdesign.com/images/cookie-icon-png-16.png"></img><p style={logo}>Krumbl</p>
     </Nav.Link>

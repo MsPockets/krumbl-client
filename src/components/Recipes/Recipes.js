@@ -25,23 +25,56 @@ const Recipes = props => {
         })
       })
   }, [])
-
+  const recipeStyle = {
+    boxShadow: '2px 4px gray',
+    borderRadius: '20px',
+    border: '2px solid gray',
+    padding: '10px',
+    width: '600px',
+    margin: '10px'
+  }
+  const titleStyle = {
+    display: 'flex',
+    justifyContent: 'center',
+    color: 'black'
+  }
+  const ingredientsStyle = {
+    margin: '5px',
+    fontSize: '14px'
+  }
+  const directionStyle = {
+    margin: '5px',
+    fontSize: '12px'
+  }
+  const mainBoard = {
+    display: 'flex',
+    justifyContent: 'center'
+  }
   const RecipesList = recipes.reverse().map(recipe => (
-    <div key={recipe.id}>
-      <h4>
+    <div style={recipeStyle} key={recipe.id}>
+      <h4 style={titleStyle}>
         <Link to={`/recipes/${recipe.id}`}>{recipe.title}</Link>
       </h4>
-      <p>Ingredients: {recipe.ingredients}</p>
-      <p>Directions: {recipe.description}</p>
+      <p style={ingredientsStyle}>Ingredients: {recipe.ingredients}</p>
+      <p style={directionStyle}>Directions: {recipe.description}</p>
     </div>
   ))
+  const postBoard = {
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'column'
+  }
   return (
-    <Layout>
-      <h4>Check out the latest recipes!</h4>
-      <ul>
-        {RecipesList}
-      </ul>
-    </Layout>
+    <div style={mainBoard}>
+      <Layout>
+        <div>
+          <h4>Check out the latest recipes!</h4>
+          <ul style={postBoard}>
+            {RecipesList}
+          </ul>
+        </div>
+      </Layout>
+    </div>
   )
 }
 

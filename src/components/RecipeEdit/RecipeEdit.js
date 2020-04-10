@@ -67,16 +67,25 @@ const RecipeEdit = props => {
   if (updated) {
     return <Redirect to={`/recipes/${props.match.params.id}`} />
   }
-
+  const recipeStyle = {
+    boxShadow: '2px 4px gray',
+    borderRadius: '20px',
+    border: '2px solid gray',
+    padding: '10px',
+    width: '600px',
+    margin: '10px'
+  }
   return (
-    <Layout>
-      <RecipeForm
-        recipe={recipe}
-        handleChange={handleChange}
-        handleSubmit={editRecipe}
-        cancelPath={`/recipes/${props.match.params.id}`}
-      />
-    </Layout>
+    <div style={recipeStyle}>
+      <Layout>
+        <RecipeForm
+          recipe={recipe}
+          handleChange={handleChange}
+          handleSubmit={editRecipe}
+          cancelPath={`/recipes/${props.match.params.id}`}
+        />
+      </Layout>
+    </div>
   )
 }
 export default RecipeEdit
