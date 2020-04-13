@@ -28,7 +28,7 @@ const RecipeForm = ({ recipe, handleSubmit, handleChange, cancelPath }) => (
         value={recipe.description}
         onChange={handleChange}
       />
-
+      <br></br>
       <button type="submit">Submit</button>
       <Link to={cancelPath}>
         <button>Cancel</button>

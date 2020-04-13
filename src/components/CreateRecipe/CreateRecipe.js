@@ -59,12 +59,15 @@ const RecipeCreate = props => {
   return (
     <div style={recipeStyle}>
       <Layout>
-        <RecipeForm
-          recipe={recipe}
-          handleChange={handleChange}
-          handleSubmit={createRecipe}
-          cancelPath="/recipes"
-        />
+        <div>
+          <h4>Create a recipe!</h4>
+          <RecipeForm
+            recipe={recipe}
+            handleChange={handleChange}
+            handleSubmit={createRecipe}
+            cancelPath="/recipes"
+          />
+        </div>
       </Layout>
     </div>
   )

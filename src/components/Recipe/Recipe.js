@@ -83,6 +83,7 @@ class Recipe extends Component {
           <h4>{recipe.title}</h4>
           <p>Ingredients: {recipe.ingredients}</p>
           <p>Directions: {recipe.description}</p>
+          <br></br>
           {recipe.editable && (
             <button onClick={this.destroy}>Delete</button>
           )}
@@ -91,6 +92,7 @@ class Recipe extends Component {
               <button>Edit</button>
             </Link>
           )}
+          <br></br>
           <Link to="/recipes">Back to all Recipes</Link>
         </div>
       </Layout>
