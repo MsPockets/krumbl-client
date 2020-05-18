@@ -10,7 +10,7 @@ import messages from '../AutoDismissAlert/messages'
 const RecipeCreate = props => {
   const [recipe, setRecipe] = useState({
     title: '',
-    ingredients: '',
+    ingredients: [],
     description: ''
   })
 
@@ -21,7 +21,8 @@ const RecipeCreate = props => {
     const editedRecipe = Object.assign({ ...recipe }, updatedField)
     setRecipe(editedRecipe)
   }
-
+  // const addIngredient = event => {
+  // }
   const createRecipe = event => {
     event.preventDefault()
     axios({
