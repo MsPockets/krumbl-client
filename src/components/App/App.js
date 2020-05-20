@@ -36,6 +36,10 @@ class App extends Component {
   msgAlert = ({ heading, message, variant }) => {
     this.setState({ msgAlerts: [...this.state.msgAlerts, { heading, message, variant }] })
   }
+  siteStyle = {
+    background: 'linear-gradient(180deg, rgba(43,214,208,.5) 30%, rgba(0,141,170,1) 100%)',
+    height: '100vh'
+  }
   // render the app
   render () {
     // destructure from the state
@@ -43,41 +47,43 @@ class App extends Component {
     // we have to return JSX
     return (
       <Fragment>
-        <Header user={user} />
-        {msgAlerts.map((msgAlert, index) => (
-          <AutoDismissAlert
-            key={index}
-            heading={msgAlert.heading}
-            variant={msgAlert.variant}
-            message={msgAlert.message}
-          />
-        ))}
-        <main className="container">
-          <Route path='/sign-up' render={() => (
-            <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
-          )} />
-          <Route path='/sign-in' render={() => (
-            <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
-          )} />
-          <AuthenticatedRoute user={user} path='/sign-out' render={() => (
-            <SignOut msgAlert={this.msgAlert} clearUser={this.clearUser} user={user} />
-          )} />
-          <AuthenticatedRoute user={user} path='/change-password' render={() => (
-            <ChangePassword msgAlert={this.msgAlert} user={user} />
-          )} />
-          <AuthenticatedRoute user={user} exact path='/create-recipe' render={({ match }) => (
-            <CreateRecipe match={ match } msgAlert={this.msgAlert} user={user} />
-          )} />
-          <AuthenticatedRoute user={user} exact path='/recipes/:id/edit' render={({ match }) => (
-            <RecipeEdit match={ match } msgAlert={this.msgAlert} user={user} />
-          )} />
-          <AuthenticatedRoute user={user} exact path='/recipes' render={({ match }) => (
-            <Recipes match={ match } msgAlert={this.msgAlert} user={user} />
-          )} />
-          <AuthenticatedRoute user={user} exact path='/recipes/:id' render={({ match }) => (
-            <Recipe match={ match } msgAlert={this.msgAlert} user={user} />
-          )} />
-        </main>
+        <div style={this.siteStyle}>
+          <Header user={user} />
+          {msgAlerts.map((msgAlert, index) => (
+            <AutoDismissAlert
+              key={index}
+              heading={msgAlert.heading}
+              variant={msgAlert.variant}
+              message={msgAlert.message}
+            />
+          ))}
+          <main className="container">
+            <Route path='/sign-up' render={() => (
+              <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
+            )} />
+            <Route path='/sign-in' render={() => (
+              <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
+            )} />
+            <AuthenticatedRoute user={user} path='/sign-out' render={() => (
+              <SignOut msgAlert={this.msgAlert} clearUser={this.clearUser} user={user} />
+            )} />
+            <AuthenticatedRoute user={user} path='/change-password' render={() => (
+              <ChangePassword msgAlert={this.msgAlert} user={user} />
+            )} />
+            <AuthenticatedRoute user={user} exact path='/create-recipe' render={({ match }) => (
+              <CreateRecipe match={ match } msgAlert={this.msgAlert} user={user} />
+            )} />
+            <AuthenticatedRoute user={user} exact path='/recipes/:id/edit' render={({ match }) => (
+              <RecipeEdit match={ match } msgAlert={this.msgAlert} user={user} />
+            )} />
+            <AuthenticatedRoute user={user} exact path='/recipes' render={({ match }) => (
+              <Recipes match={ match } msgAlert={this.msgAlert} user={user} />
+            )} />
+            <AuthenticatedRoute user={user} exact path='/recipes/:id' render={({ match }) => (
+              <Recipe match={ match } msgAlert={this.msgAlert} user={user} />
+            )} />
+          </main>
+        </div>
       </Fragment>
     )
   }
