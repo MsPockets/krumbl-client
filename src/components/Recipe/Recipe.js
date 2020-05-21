@@ -69,7 +69,7 @@ class Recipe extends Component {
       borderRadius: '20px',
       border: '2px solid gray',
       padding: '10px',
-      width: '600px',
+      width: '85vw',
       margin: '10px',
       background: 'white',
       color: 'black'

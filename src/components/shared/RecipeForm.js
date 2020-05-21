@@ -20,17 +20,17 @@ const RecipeForm = ({ recipe, handleSubmit, handleChange, cancelPath, addIngredi
         <input
           placeholder="Paprika, Flour, Water"
           name="name"
-          value={recipe.ingredients}
+          value={recipe.ingredients.name}
           onChange={handleChange}
         />
         <input
           required="true"
-          name
+          name="quantity"
           placeholder="1, 1.5, .75"
           value={recipe.ingredients.quantity}
           onChange={handleChange}
         />
-        <select required="true" label="Measurement" value={recipe.ingredients.measurement} name="measurement">
+        <select required="true" label="Measurement" value={recipe.ingredients.measurement} onChange={handleChange} name="measurement">
           <option value="g">Grams</option>
           <option value="ml">Milliliters</option>
           <option value="Cups">Cups</option>

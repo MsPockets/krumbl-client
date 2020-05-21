@@ -68,11 +68,12 @@ const RecipeEdit = props => {
     return <Redirect to={`/recipes/${props.match.params.id}`} />
   }
   const recipeStyle = {
+    backgroungColor: '#f0f0f0',
     boxShadow: '2px 4px gray',
     borderRadius: '20px',
     border: '2px solid gray',
     padding: '10px',
-    width: '600px',
+    width: '85vw',
     margin: '10px'
   }
   return (

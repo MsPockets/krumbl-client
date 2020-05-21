@@ -30,13 +30,14 @@ const Recipes = props => {
     borderRadius: '20px',
     border: '2px solid gray',
     padding: '10px',
-    width: '600px',
+    width: '85vw',
     margin: '10px',
     backgroundColor: '#f0f0f0'
   }
   const titleStyle = {
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    width: '85vw'
   }
   const ingredientsStyle = {
     margin: '5px',
@@ -62,7 +63,9 @@ const Recipes = props => {
   const postBoard = {
     display: 'flex',
     justifyContent: 'center',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    margin: '0, 5px',
+    paddingInlineStart: '10px'
   }
   return (
     <div style={mainBoard}>
