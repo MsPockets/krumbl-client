@@ -10,21 +10,28 @@ import messages from '../AutoDismissAlert/messages'
 const RecipeCreate = props => {
   const [recipe, setRecipe] = useState({
     title: '',
-    ingredients: [],
+    ingredients: [{
+      name: '',
+      quantity: '',
+      measurement: ''
+    }],
     description: ''
   })
 
   const [createdRecipeId, setCreatedRecipeId] = useState(null)
 
   const handleChange = event => {
+    console.log(event.target.value)
     const updatedField = { [event.target.name]: event.target.value }
     const editedRecipe = Object.assign({ ...recipe }, updatedField)
+    console.log(editedRecipe)
     setRecipe(editedRecipe)
   }
   // const addIngredient = event => {
   // }
   const createRecipe = event => {
     event.preventDefault()
+    console.log(recipe.ingredients)
     axios({
       url: `${apiUrl}/recipes`,
       method: 'POST',

@@ -83,7 +83,7 @@ class Recipe extends Component {
       <Layout>
         <div style={recipeStyle}>
           <h4>{recipe.title}</h4>
-          <p>Ingredients: {recipe.ingredients}</p>
+          <p>Ingredients: {recipe.ingredients.name} {recipe.ingredients.quantity} {recipe.ingredients.measurement} </p>
           <p>Directions: {recipe.description}</p>
           <br></br>
           {recipe.editable && (
