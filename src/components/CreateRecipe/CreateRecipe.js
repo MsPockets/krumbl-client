@@ -54,7 +54,8 @@ const RecipeCreate = props => {
     border: '2px solid gray',
     padding: '10px',
     width: '600px',
-    margin: '10px'
+    margin: '10px',
+    background: 'white'
   }
   return (
     <div style={recipeStyle}>

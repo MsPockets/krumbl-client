@@ -31,12 +31,12 @@ const Recipes = props => {
     border: '2px solid gray',
     padding: '10px',
     width: '600px',
-    margin: '10px'
+    margin: '10px',
+    backgroundColor: '#f0f0f0'
   }
   const titleStyle = {
     display: 'flex',
-    justifyContent: 'center',
-    color: 'black'
+    justifyContent: 'center'
   }
   const ingredientsStyle = {
     margin: '5px',
@@ -68,7 +68,7 @@ const Recipes = props => {
     <div style={mainBoard}>
       <Layout>
         <div>
-          <h4>Check out the latest recipes!</h4>
+          <h4 style={titleStyle}>Check out the latest recipes!</h4>
           <ul style={postBoard}>
             {RecipesList}
           </ul>

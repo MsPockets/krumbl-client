@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 
 // importing all custom components for the app
@@ -36,13 +36,17 @@ class App extends Component {
   msgAlert = ({ heading, message, variant }) => {
     this.setState({ msgAlerts: [...this.state.msgAlerts, { heading, message, variant }] })
   }
+  siteStyle = {
+    background: 'url(./img/background.jpg)',
+    minHeight: '100vh'
+  }
   // render the app
   render () {
     // destructure from the state
     const { msgAlerts, user } = this.state
     // we have to return JSX
     return (
-      <Fragment>
+      <div style={this.siteStyle}>
         <Header user={user} />
         {msgAlerts.map((msgAlert, index) => (
           <AutoDismissAlert
@@ -78,7 +82,7 @@ class App extends Component {
             <Recipe match={ match } msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
-      </Fragment>
+      </div>
     )
   }
 }

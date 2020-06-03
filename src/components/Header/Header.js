@@ -33,7 +33,7 @@ const logo = {
 const Header = ({ user }) => (
   <Navbar style={NavbarStyle} expand="md">
     <Nav.Link href="#recipes">
-      <img style={logo} src="https://i.ya-webdesign.com/images/cookie-icon-png-16.png"></img><p style={logo}>Krumbl</p>
+      <img style={logo} src={require('./img/logo.png')}></img><p style={logo}>Krumbl</p>
     </Nav.Link>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">

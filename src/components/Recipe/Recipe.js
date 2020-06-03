@@ -70,7 +70,9 @@ class Recipe extends Component {
       border: '2px solid gray',
       padding: '10px',
       width: '600px',
-      margin: '10px'
+      margin: '10px',
+      background: 'white',
+      color: 'black'
     }
     if (deleted) {
       return <Redirect to={
